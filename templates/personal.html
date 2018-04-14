@@ -1,0 +1,265 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block cssjs %}
+    <link href="{% static 'img/icon.png' %}" rel="shortcut icon">
+    <link href="{% static 'css/personal.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/share_style0_16.css' %}">
+
+    <!--jACKY end-->
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid web-body">
+        <div class="row user-info">
+            <div class="container">
+                <div class="row main-user" style="height: 205px;">
+                    <div class="col-md-2 col-md-offset-1 col-xs-3"><!--jACKY 2016-3-29-->
+                        <img class="img-circle avatar" src="{% static 'img/man.jpg' %}" >
+                    </div>
+                    <div class="col-md-5 col-xs-9"><!--jACKY 2016-3-29-->
+                        <div class="right-user">
+                            <div class="clearfix">
+                                <h2 style="float: left; margin-top:0;">1025464043@qq.com</h2>
+
+                            </div>
+                            <div style="padding-top:10px;" class="clearfix">
+
+                                <p>这个家伙很懒，什么也没有留下～～！</p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                        <div class="col-md-12 info" style="padding-top:40px;">
+                            <div class="col-md-6 col-xs-6"><!--jACKY 2016-3-29-->
+                                <p>积分</p>
+                                <h5><strong>10</strong></h5>
+                            </div>
+                            <div class="col-md-6 col-xs-6"><!--jACKY 2016-3-29-->
+                                <p>排名</p>
+                                <h5><strong>60942</strong></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="container user-main">
+                <div class="col-md-9 col-sm-8 col-xs-12">
+                    <div class="tabbable-panel">
+                        <div class="tabbable-line">
+                            <ul class="nav nav-tabs ">
+                                <li class="active">
+                                    <a href="#paneOne" data-toggle="tab">
+                                        收藏记录</a>
+                                </li>
+                                <li>
+{#                                    <a onclick="loadWrite();" href="#paneTwo" data-toggle="tab">#}
+                                    <a href="#paneTwo" data-toggle="tab">
+                                        共享记录
+                                    </a>
+                                </li>
+                                <li>
+{#                                    <a onclick="loadQuestion();" href="#paneThree" data-toggle="tab">#}
+                                    <a  href="#paneThree" data-toggle="tab">
+                                        我的留言
+                                    </a>
+                                </li>
+                                <li>
+{#                                    <a onclick="loadNote();" href="#paneFive" data-toggle="tab">#}
+                                    <a href="#paneFive" data-toggle="tab">
+                                        其他信息
+                                    </a>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane pane-content active" id="paneOne"><div class="hasnt-article">暂 无 任 何 收藏 图表</div></div>
+                                <div class="tab-pane pane-content" id="paneTwo"></div>
+                                <!-- 问答 -->
+                                <div class="tab-pane" id="paneThree">
+                                    <div class="row">
+                                        <div class="col-md-12 question-answer">
+                                            <a onclick="loadQuestion();">
+                                                <span class="label btn-question">留言</span>
+                                            </a>
+                                            <a onclick="loadAnswer();">
+                                                <span class="label btn-answer">回复</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="widget">
+                                        <div class="panel-body">
+                                            <ul class="answer-list">
+
+                                            </ul>
+                                        </div>
+                                        <nav>
+                                            <ul class="pagination" id="pagination"></ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <!-- 课堂笔记 -->
+
+                                <div class="tab-pane" id="paneFive">
+                                    <div class="note">
+                                        <div class="panel-body">
+                                            <div class="note-body">
+                                                <div class="body-left">
+                                                    <ul class="list-group note-list" id="noteList">
+
+                                                    </ul>
+                                                    <nav>
+                                                        <ul class="pager" style="padding-right: 6px;padding-left: 6px;">
+                                                            <li class="previous">
+                                                                <a onclick="previousPage();" id="previous" href="#m1"><span aria-hidden="true">←</span> 上一页</a>
+                                                            </li>
+                                                            <li class="current">
+                                                                <!--<span class="pager-num">-->
+                                                                    <!--<b class="pager-cur">1</b>/<em class="pager-total">1</em>-->
+                                                                <!--</span>-->
+                                                                <span>1/1</span>
+                                                            </li>
+                                                            <li class="next">
+                                                                <a onclick="nextPage();" href="#m1">下一页 <span aria-hidden="true">→</span></a>
+                                                            </li>
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+                                                <div class="body-right">
+                                                    <div id="default-right">
+                                                        <p class="pull-right" style="color: rgb(53, 128, 191);">小贴士：单击右侧列表可显示和编辑。</p>
+                                                    </div>
+                                                    <div id="body-right" class="content-right" style="display:none;">
+                                                        <div class="edit-right">
+                                                            <!--<button class="btn btn-default btn-edit" id="btn-edit">-->
+                                                                <!--<i class="glyphicon glyphicon-pencil"></i> 编辑-->
+                                                            <!--</button>-->
+                                                        </div>
+                                                        <div>
+                                                            <h4 title="笔记标题" class="note-header">
+                                                            </h4><input type="hidden" id="hidden-id" value="">
+
+                                                            <textarea title="笔记内容" class="note-content" name="content" rows="13" disabled="disabled"></textarea>
+                                                            <input type="hidden" id="hidden-pid" value="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-12">
+                    <div class="panel panel-default">
+                        <table class="table table-hover table-rank">
+                            <thead>
+                                <tr><th>图表排行</th><th>标题</th><th>浏览量</th></tr>
+                            </thead>
+                            <tbody>
+
+                            <tr class="">
+                                <td class="text-center">
+                                    <span style="background-color:#108a93;" class="badge">1</span>
+                                </td>
+                                <td><a title="ciga" href="{% url 'personal' %}">ciga</a></td>
+                                <td class="text-center">2834</td>
+                            </tr>
+
+                            <tr class="info">
+                                <td class="text-center">
+                                    <span style="background-color:#108a93;" class="badge">2</span>
+                                </td>
+                                <td><a title="1249837384@qq.com" href="{% url 'personal' %}">1249837384@qq.com</a></td>
+                                <td class="text-center">2639</td>
+                            </tr>
+
+                            <tr class="">
+                                <td class="text-center">
+                                    <span style="background-color:#108a93;" class="badge">3</span>
+                                </td>
+                                <td><a title="jimi" href="{% url 'personal' %}">jimi</a></td>
+                                <td class="text-center">2233</td>
+                            </tr>
+
+                            <tr class="info">
+                                <td class="text-center">
+                                    <span style="background-color:#108a93;" class="badge">4</span>
+                                </td>
+                                <td><a title="916035003@qq.com" href="{% url 'personal' %}">916035003@qq.com</a></td>
+                                <td class="text-center">2214</td>
+                            </tr>
+
+                            <tr class="">
+                                <td class="text-center">
+                                    <span style="background-color:#108a93;" class="badge">5</span>
+                                </td>
+                                <td><a title="学霸" href="{% url 'personal' %}">学霸</a></td>
+                                <td class="text-center">1712</td>
+                            </tr>
+
+                            <tr class="info">
+                                <td class="text-center">
+                                    <span style="background-color:#108a93;" class="badge">6</span>
+                                </td>
+                                <td><a title="NoBug" href="{% url 'personal' %}">NoBug</a></td>
+                                <td class="text-center">1596</td>
+                            </tr>
+
+                            <tr class="">
+                                <td class="text-center">
+                                    <span style="background-color:#108a93;" class="badge">7</span>
+                                </td>
+                                <td><a title="duke" href="{% url 'personal' %}">duke</a></td>
+                                <td class="text-center">1561</td>
+                            </tr>
+
+                            <tr class="info">
+                                <td class="text-center">
+                                    <span style="background-color:#108a93;" class="badge">8</span>
+                                </td>
+                                <td><a title="学无止境0913" href="{% url 'personal' %}">学无止境0913</a></td>
+                                <td class="text-center">1469</td>
+                            </tr>
+
+                            <tr class="">
+                                <td class="text-center">
+                                    <span style="background-color:#108a93;" class="badge">9</span>
+                                </td>
+                                <td><a title="茶林" href="{% url 'personal' %}">茶林</a></td>
+                                <td class="text-center">1448</td>
+                            </tr>
+
+                            <tr class="info">
+                                <td class="text-center">
+                                    <span style="background-color:#108a93;" class="badge">10</span>
+                                </td>
+                                <td><a title="240050497@qq.com" href="{% url 'personal' %}">240050497@qq.com</a></td>
+                                <td class="text-center">1393</td>
+                            </tr>
+
+                            <tr class="">
+                                <td colspan="3" class="text-center">
+                                    <a href="/ranking">更多 Top 100 &gt;&gt;</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block foot %}
+    <script src="{% static 'js/jquery.validate.js' %}"></script>
+    <script src="{% static 'js/messages_zh.js' %}"></script>
+{% endblock %}
+
