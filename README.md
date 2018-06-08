@@ -9,5 +9,5 @@
 2. conf文件夹：Ubuntu+Nginx+Uwsgi+Django,部署的配置文件，需要安装对应的软件。
 1. data文件夹：数据源文件，需要将里面的数据导入数据库中，网站才能正常显示。
 3. 相关依赖库：项目是从大项目抽取出来单独做的一个小项目，requirements.py文件中没有排除与本项目无关的库。
-4. 安装： `pip install -r requirements`
+4. 安装依赖库： `pip install -r requirements`
 1. Settings配置：请将数据库等相关配置改成自己的配置信息。
