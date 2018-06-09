@@ -1,6 +1,6 @@
 import xadmin
+from django.urls import path, include, re_path
 
-from django.urls import include, path, re_path
 from django.views.static import serve
 from rest_framework.routers import DefaultRouter
 from rest_framework_jwt.views import obtain_jwt_token
@@ -34,8 +34,8 @@ urlpatterns = [
     path('years/', ResourceView.as_view(), name='years'),
 
     #  数据列表页
-    path(r'^', include(router.urls)),
-    re_path(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
+    re_path(r'^', include(router.urls)),
+    re_path(r'^media/(?P<path>.*)/$', serve, {"document_root": MEDIA_ROOT}),
     # re_path(r'^static/(?P<path>.*)$', serve, {"document_root": STATIC_ROOT}),
 
     # jwt认证模式
